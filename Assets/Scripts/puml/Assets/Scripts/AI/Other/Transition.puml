@@ -1,0 +1,11 @@
+@startuml
+class Transition {
+    + Transition(isConditionMet:Func<bool>, targetState:State)
+}
+class "Func`1"<T> {
+}
+Transition --> "isConditionMet<bool>" "Func`1"
+Transition --> "targetState" State
+Transition --> "IsConditionMet<bool>" "Func`1"
+Transition --> "TargetState" State
+@enduml

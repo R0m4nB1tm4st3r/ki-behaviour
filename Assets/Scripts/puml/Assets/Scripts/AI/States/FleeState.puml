@@ -1,0 +1,11 @@
+@startuml
+class FleeState {
+    + FleeState(entity:Entity)
+    - CalculateFleeingDirection() : Vector3
+    + <<override>> OnStateEnter() : void
+    + <<override>> OnStateUpdate() : void
+    + <<override>> OnStateExit() : void
+}
+State <|-- FleeState
+FleeState o-> "fleeingDirection" Vector3
+@enduml

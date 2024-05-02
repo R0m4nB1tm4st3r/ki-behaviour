@@ -1,0 +1,7 @@
+@startuml
+enum EStateMachineType {
+    Prey,
+    Predator,
+    Enemy,
+}
+@enduml

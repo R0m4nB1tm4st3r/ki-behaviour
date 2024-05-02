@@ -1,0 +1,12 @@
+@startuml
+class StateMachine {
+    + StateMachine(initialState:State, transitions:Dictionary<State, List<Transition>>)
+    - GetNextState() : State
+    - SwitchState(targetState:State) : void
+    + Tick() : void
+}
+class "Dictionary`2"<T1,T2> {
+}
+StateMachine --> "currentState" State
+StateMachine --> "transitions<State,List<Transition>>" "Dictionary`2"
+@enduml

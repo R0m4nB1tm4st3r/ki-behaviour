@@ -1,0 +1,9 @@
+@startuml
+abstract class State {
+    # State(entity:Entity)
+    + {abstract} OnStateEnter() : void
+    + {abstract} OnStateUpdate() : void
+    + {abstract} OnStateExit() : void
+}
+State --> "entity" Entity
+@enduml

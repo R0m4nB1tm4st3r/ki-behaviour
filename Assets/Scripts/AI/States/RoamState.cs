@@ -5,6 +5,13 @@ namespace States
 {
     public class RoamState : State
     {
+        #region Constant Values
+
+        private const float RoamMinTime = 5.0f;
+        private const float RoamMaxTime = 10.0f;
+        
+        #endregion
+        
         #region Constructors
 
         public RoamState(Entity entity) : base(entity) { }
@@ -28,10 +35,13 @@ namespace States
             entity.CurrentRoamingTime = 0.0f;
         
             // set time limit randomly
-            entity.MaxRoamingTime = Random.Range(5.0f, 10.0f);
+            entity.MaxRoamingTime = Random.Range(RoamMinTime, RoamMaxTime);
         
             // change color
-            entity.MeshRenderer.material.color = Color.green;
+            foreach (var material in entity.MeshRenderer.materials)
+            {
+                material.color = Color.green;
+            };
         }
 
         public override void OnStateUpdate()
@@ -41,17 +51,15 @@ namespace States
         
             // move along moving direction
             entity.Agent.SetDestination(entity.transform.position + entity.MovingDirection);
-
-            /*if (roamTimer >= enemy.RoamDuration)
-        {
-            enemy.TransitionToState(enemy.IdleState);
-        }*/
         }
 
         public override void OnStateExit()
         {
             // change color
-            entity.MeshRenderer.material.color = Color.white;
+            foreach (var material in entity.MeshRenderer.materials)
+            {
+                material.color = Color.white;
+            }
         
             // set moving speed back
             entity.Agent.speed = 0.0f;

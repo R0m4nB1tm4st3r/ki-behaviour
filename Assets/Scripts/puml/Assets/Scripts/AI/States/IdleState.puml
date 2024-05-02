@@ -1,0 +1,11 @@
+@startuml
+class IdleState {
+    - <<const>> IdleMinTime : float = 4.0f
+    - <<const>> IdleMaxTime : float = 8.0f
+    + IdleState(entity:Entity)
+    + <<override>> OnStateEnter() : void
+    + <<override>> OnStateUpdate() : void
+    + <<override>> OnStateExit() : void
+}
+State <|-- IdleState
+@enduml

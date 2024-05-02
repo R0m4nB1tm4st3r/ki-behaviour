@@ -7,7 +7,10 @@ namespace States
     public class IdleState : State
     {
         #region Constant Values
-    
+
+        private const float IdleMinTime = 4.0f;
+        private const float IdleMaxTime = 8.0f;
+        
         #endregion
 
         #region Private Attributes
@@ -36,10 +39,13 @@ namespace States
             entity.CurrentIdleTime = 0.0f;
         
             // set time limit
-            entity.MaxIdleTime = Random.Range(4.0f, 8.0f);
+            entity.MaxIdleTime = Random.Range(IdleMinTime, IdleMaxTime);
         
             // change color
-            entity.MeshRenderer.material.color = Color.blue;
+            foreach (var material in entity.MeshRenderer.materials)
+            {
+                material.color = Color.blue;
+            }
         }
 
         public override void OnStateUpdate()
@@ -54,7 +60,10 @@ namespace States
         public override void OnStateExit()
         {
             // change color
-            entity.MeshRenderer.material.color = Color.white;
+            foreach (var material in entity.MeshRenderer.materials)
+            {
+                material.color = Color.white;
+            }
         }
 
         #endregion

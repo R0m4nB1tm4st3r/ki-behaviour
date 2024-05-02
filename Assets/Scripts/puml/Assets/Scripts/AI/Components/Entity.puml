@@ -1,0 +1,42 @@
+@startuml
+class Entity {
+    - <<const>> MaxHitCount : int = 3
+    - <<const>> SphereCastMaxDistance : float = 50.0f
+    - walkingSpeed : float
+    - fleeingSpeed : float
+    - attentionRadius : float
+    - idleLookYAngle : float = 10.0f
+    - currentRoamingTime : float
+    - currentIdleTime : float
+    - maxRoamingTime : float
+    - maxIdleTime : float
+    + WalkingSpeed : float <<get>>
+    + FleeingSpeed : float <<get>>
+    + AttentionRadius : float <<get>>
+    + IdleLookYAngle : float <<get>>
+    + CurrentRoamingTime : float <<get>> <<set>>
+    + CurrentIdleTime : float <<get>> <<set>>
+    + MaxRoamingTime : float <<get>> <<set>>
+    + MaxIdleTime : float <<get>> <<set>>
+    - SetStateMachine() : void
+    - IsInDanger() : bool
+    - Start() : void
+    - Update() : void
+    - OnDrawGizmosSelected() : void
+}
+MonoBehaviour <|-- Entity
+Entity o-> "agent" NavMeshAgent
+Entity o-> "meshRenderer" SkinnedMeshRenderer
+Entity --> "ownCenter" Transform
+Entity --> "dangerObjectMask" LayerMask
+Entity --> "stateMachineType" EStateMachineType
+Entity o-> "movingDirection" Vector3
+Entity o-> "fleeingDirection" Vector3
+Entity o-> "stateMachine" StateMachine
+Entity --> "Agent" NavMeshAgent
+Entity --> "MeshRenderer" SkinnedMeshRenderer
+Entity --> "DangerObjectMask" LayerMask
+Entity --> "MovingDirection" Vector3
+Entity --> "FleeingDirection" Vector3
+Entity --> "DangerSphereScanCenter" Vector3
+@enduml

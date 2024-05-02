@@ -1,0 +1,11 @@
+@startuml
+class RoamState {
+    - <<const>> RoamMinTime : float = 5.0f
+    - <<const>> RoamMaxTime : float = 10.0f
+    + RoamState(entity:Entity)
+    + <<override>> OnStateEnter() : void
+    + <<override>> OnStateUpdate() : void
+    + <<override>> OnStateExit() : void
+}
+State <|-- RoamState
+@enduml

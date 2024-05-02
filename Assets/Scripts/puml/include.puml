@@ -1,0 +1,10 @@
+@startuml
+!include .\\.\Assets\Scripts\AI\Components\Entity.puml
+!include .\\.\Assets\Scripts\AI\Other\EStateMachineType.puml
+!include .\\.\Assets\Scripts\AI\Other\StateMachine.puml
+!include .\\.\Assets\Scripts\AI\Other\Transition.puml
+!include .\\.\Assets\Scripts\AI\States\FleeState.puml
+!include .\\.\Assets\Scripts\AI\States\IdleState.puml
+!include .\\.\Assets\Scripts\AI\States\RoamState.puml
+!include .\\.\Assets\Scripts\AI\States\State.puml
+@enduml
